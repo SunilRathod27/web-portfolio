@@ -10,7 +10,7 @@ class Profile(models.Model):
     linkedin_url = models.CharField(max_length=100)
     github_url = models.CharField(max_length=50)
     about_me = models.CharField(max_length=500)
-    cv = models.FileField(upload_to='cvs', blank=True)
+    cv_link = models.CharField(max_length=255, blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
     def __str__(self):
@@ -84,7 +84,7 @@ class Project(models.Model):
     main_image = models.ImageField(upload_to='project_images', default='')
     repo_link = models.CharField(max_length=50, blank=True)
     demo_link = models.CharField(max_length=50, blank=True)
-    document = models.FileField(upload_to='project_documents', blank=True)
+    document_link = models.CharField(max_length=255, blank=True)
     project_category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE, related_name='projects')
 
     def __str__(self):
@@ -123,7 +123,7 @@ class Certification(models.Model):
     title = models.CharField(max_length=100)
     authority = models.CharField(max_length=30)
     date_issued = models.CharField(max_length=20)
-    document = models.FileField(upload_to='certifications', blank=True)
+    document_link = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return self.title
@@ -135,7 +135,7 @@ class Seminar(models.Model):
     event_date = models.CharField(max_length=20)
     link_proof = models.CharField(max_length=200, blank=True)
     link_icon = models.CharField(max_length=20, blank=True)
-    document = models.FileField(upload_to='seminars', blank=True)
+    document_link = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return self.title

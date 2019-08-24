@@ -57,7 +57,7 @@
                                 {% endfor %}
                             </ul>
                         </div>
-                        <a href="{% url 'resume' seej.profile.user.pk %}" class="btn btn-fill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" target="_blank">View Resume<i class="fa fa-file"></i></a>
+                        <a href="{{ seej.profile.cv_link }}" class="btn btn-fill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" target="_blank">View Resume<i class="fa fa-file"></i></a>
                     </div>
                 </div>
             </div>
@@ -227,14 +227,14 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            {% if project.repo_link or project.document %}
+                            {% if project.repo_link or project.document_link %}
                                 {#                                <a href="{{ project.repo_link }}" class="btn" target="_blank"><i class="fa fa-github"></i> View Demo</a>#}
                                 <ul class="social-icon">
                                     {% if project.repo_link %}
                                         <li><a href="{{ project.repo_link }}" title="Visit Repository" target="_blank"><i class="fa fa-github"></i></a></li>
                                     {% endif %}
-                                    {% if project.document %}
-                                        <li><a href="{% url 'project_document' project.pk %}" title="View Documentation" target="_blank"><i class="fa fa-file"></i></a></li>
+                                    {% if project.document_link %}
+                                        <li><a href="{{ project.document_link }}" title="View Documentation" target="_blank"><i class="fa fa-file"></i></a></li>
                                     {% endif %}
                                 </ul>
                             {% endif %}
@@ -270,9 +270,9 @@
                                         <h4>{{ cert.title }}</h4>
                                         <p style="color: #2196F3"><b>{{ cert.authority }}</b></p>
                                         <div class="mh-eduyear">{{ cert.date_issued }}</div>
-                                        {% if cert.document %}
+                                        {% if cert.document_link %}
                                             <ul class="social-icon" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                                                <li><a href="{% url 'certification' cert.pk %}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
+                                                <li><a href="{{ cert.document_link }}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
                                             </ul>
                                         {% endif %}
                                     </div>
@@ -291,10 +291,10 @@
                                         <p style="color: #2196F3"><b>{{ seminar.organizer }}</b></p>
                                         <div class="mh-eduyear">{{ seminar.event_date }}</div>
 
-                                        {% if seminar.document or seminar.link_proof %}
+                                        {% if seminar.document_link or seminar.link_proof %}
                                             <ul class="social-icon" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                                                {% if seminar.document %}
-                                                    <li><a href="{% url 'seminar' seminar.pk %}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
+                                                {% if seminar.document_link %}
+                                                    <li><a href="{{ seminar.document_link }}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
                                                 {% endif %}
                                                 {% if seminar.link_proof %}
                                                     <li><a href="{{ seminar.link_proof }}" title="Visit Link" target="_blank"><i class="fa {{ seminar.link_icon }}"></i></a></li>
