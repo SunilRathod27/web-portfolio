@@ -5,7 +5,7 @@ from django.db import models
 class Profile(models.Model):
     contact_no = models.CharField(max_length=20)
     address = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='profile_pics')
+    image = models.ImageField(help_text='425x425px recommmended', upload_to='profile_pics')
     title = models.CharField(max_length=100, blank=True)
     linkedin_url = models.CharField(max_length=100)
     github_url = models.CharField(max_length=50)
