@@ -228,7 +228,6 @@
                                 </ul>
                             </div>
                             {% if project.repo_link or project.document_link %}
-                                {#                                <a href="{{ project.repo_link }}" class="btn" target="_blank"><i class="fa fa-github"></i> View Demo</a>#}
                                 <ul class="social-icon">
                                     {% if project.repo_link %}
                                         <li><a href="{{ project.repo_link }}" title="Visit Repository" target="_blank"><i class="fa fa-github"></i></a></li>
@@ -237,6 +236,10 @@
                                         <li><a href="{{ project.document_link }}" title="View Documentation" target="_blank"><i class="fa fa-file"></i></a></li>
                                     {% endif %}
                                 </ul>
+                            {% endif %}
+                            <br><br>
+                            {% if project.demo_link %}
+                                <a href="{{ project.demo_link }}" class="btn btn-fill" target="_blank">Live Demo</a>
                             {% endif %}
                             <br>
                         </div>
