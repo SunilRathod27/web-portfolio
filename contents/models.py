@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from PIL import Image
 
 
 class Profile(models.Model):
@@ -15,6 +16,19 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+    # Override the save function in Profile class:
+    def save(self, *args, **kwargs):
+        # run the parent class' save() function:
+        super().save(*args, **kwargs)
+
+        # open the image of the current instance:
+        img = Image.open(self.image.path)
+
+        if img.height > 425 or img.width > 425:
+            output_size = (425, 425)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
 
 
 class Focus(models.Model):
